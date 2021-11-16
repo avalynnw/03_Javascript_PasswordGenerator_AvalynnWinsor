@@ -2,6 +2,8 @@
 var generateBtn = document.querySelector("#generate");
 var copyBtn = document.querySelector("#copy");
 
+var isFirefox = typeof InstallTrigger !== 'undefined';
+
 // Write password to the #password input
 function writePassword() {
   var password = generatePassword();
@@ -231,8 +233,13 @@ function copy_to_clipboard() {
   var copyText = document.getElementById("password");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value)
-  document.execCommand('copy');
+  if(isFirefox == true) {
+    navigator.clipboard.writeText(copyText.value);
+  }
+  else {
+    document.execCommand('copy');
+  }
+
   alert("Password copied to clipboard!");
 }
 
