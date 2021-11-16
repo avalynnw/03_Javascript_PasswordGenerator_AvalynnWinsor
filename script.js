@@ -231,11 +231,8 @@ function copy_to_clipboard() {
   var copyText = document.getElementById("password");
   copyText.select();
   copyText.setSelectionRange(0, 99999);
-  try {
-    navigator.clipboard.write(copyText)
-  } finally {
-    document.execCommand('copy');
-  }
+  navigator.clipboard.writeText(copyText.value)
+  document.execCommand('copy');
   alert("Password copied to clipboard!");
 }
 
