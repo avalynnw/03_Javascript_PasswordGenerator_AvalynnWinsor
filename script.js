@@ -232,7 +232,7 @@ function copy_to_clipboard() {
   copyText.select();
   copyText.setSelectionRange(0, 99999);
   try {
-    navigator.clipboard.writeText(copyText)
+    navigator.clipboard.write(copyText)
   } finally {
     document.execCommand('copy');
   }
